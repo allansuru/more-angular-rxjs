@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutes } from './home.routing';
 
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutes
+    HomeRoutes,
+    MatCardModule
   ],
   declarations: [HomeComponent]
 })

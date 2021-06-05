@@ -1,23 +1,19 @@
-<div class="card">
-  <div class="card-header">
-    {{pageTitle}}
-  </div>
-  <div class="card-body">
-    <div class="container-fluid">
-      <div class="text-center">
-        <img src="./../../../assets/images/ff7.jpeg" class=" img-responsive center-block"
-          style="max-height:300px;padding-bottom:50px" />
-      </div>
-
-      <div class="text-center">Developed by:</div>
-      <div class="text-center">
-        <h3>Allan Passos</h3>
-      </div>
-
-      <div class="text-center">@allanpassos</div>
-      <div class="text-center">
-        <a href="https://github.com/allansuru">my git</a>
-      </div>
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title> {{pageTitle}}</mat-card-title>
+    <mat-card-subtitle>Estudos do Allan</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="./../../../assets/images/ff7.jpeg" alt="Photo">
+  <mat-card-content>
+    <div class="text-center">Developed by:</div>
+    <div class="text-center">
+      <h3>Allan Passos</h3>
     </div>
-  </div>
-</div>
+    <div class="text-center">@allanpassos</div>
+    <div class="text-center">
+      <a href="https://github.com/allansuru">my git</a>
+    </div>
+
+  </mat-card-content>
+</mat-card>
