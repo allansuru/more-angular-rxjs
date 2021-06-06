@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppData } from './app-data';
 import { MessagesModule } from './core/modules/messages/messages.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MessagesModule } from './core/modules/messages/messages.module';
     MatIconModule,
     MatToolbarModule,
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
-    MessagesModule
+    MessagesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

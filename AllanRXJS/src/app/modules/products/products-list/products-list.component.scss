@@ -2,3 +2,18 @@
   .container-product-list {
     width: 500px;
   }
+
+  .product-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .button-product {
+      width: 450px;
+
+    }
+    ::ng-deep button.mat-focus-indicator.button-product.mat-stroked-button.mat-button-base.ng-star-inserted.active{
+      background: yellow !important;
+    }
+
+  }
+

@@ -1,3 +1,4 @@
+import { ProductsService } from './shared/services/products.service';
 import { ContentCardModule } from './../../core/modules/content-card/content-card.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { NgModule } from '@angular/core';
@@ -6,15 +7,20 @@ import { ProductsComponent } from './products.component';
 import { ProductsRoutes } from './products.routing';
 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
+import { LoadingModule } from 'src/app/core/modules/loading/loading.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ProductsRoutes,
     MatGridListModule,
-    ContentCardModule
+    MatButtonModule,
+    ContentCardModule,
+    LoadingModule
   ],
-  declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent]
+  declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent],
+  providers: [ProductsService]
 })
 export class ProductsModule { }

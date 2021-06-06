@@ -9,8 +9,8 @@ export interface Supplier {
 // Provided to demonstrate how to map to
 // class instances.
 export class SupplierClass {
-  id: number;
-  name: string;
-  cost: number;
-  minQuantity: number;
+  id!: number;
+  name!: string;
+  cost!: number;
+  minQuantity!: number;
 }

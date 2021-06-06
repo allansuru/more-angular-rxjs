@@ -26,7 +26,7 @@ export class ContentCardComponent implements OnInit {
   subtitle!: string;
   @Input() minHeigth = '100';
   @Input()
-  loading!: boolean;
+  loading!: boolean | null;
 
   constructor() { }
 

@@ -1,5 +1,11 @@
 <div class="container-product-list">
-  <content-card [title]="'Produtos'" [subtitle]="'Lista de produtos'">
-    <div main-content></div>
+  <content-card [title]="'Produtos'" [subtitle]="'Lista de produtos'"
+    [loading]="(this.loadingService.loading$ | async)">
+    <div class="product-items" main-content *ngIf="productsService.products$ | async as products">
+
+      <button mat-stroked-button *ngFor='let product of products' class="button-product"
+        (click)='onSelected(product.id)' [ngClass]="{'active': product?.id === (selectedProduct$ | async)?.id}">
+        {{ product.productName }} {{ product.category }}</button>
+    </div>
   </content-card>
 </div>
