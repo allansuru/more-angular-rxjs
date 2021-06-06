@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AppData } from './app-data';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
