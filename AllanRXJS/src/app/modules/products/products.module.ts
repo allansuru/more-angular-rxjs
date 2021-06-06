@@ -1,3 +1,4 @@
+import { ContentCardModule } from './../../core/modules/content-card/content-card.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
   imports: [
     CommonModule,
     ProductsRoutes,
-    MatGridListModule
+    MatGridListModule,
+    ContentCardModule
   ],
   declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent]
 })
