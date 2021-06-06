@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppData } from './app-data';
+import { MessagesModule } from './core/modules/messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AppData } from './app-data';
     MatIconModule,
     MatToolbarModule,
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
