@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { catchError, shareReplay } from 'rxjs/operators';
 
@@ -29,7 +29,7 @@ export class HttpApiService {
         .get<payloadT>(`${environment.baseUrl}${endPointUrl}`, {
           params,
         })
-        .pipe(shareReplay(), catchError((error) => this.handlerError(error)))
+        .pipe(shareReplay(), catchError((error) => this.handleError(error)))
         .subscribe((res: any) => {
           res?.error ? observer.error(res.error) : observer.next(res);
           observer.complete();
@@ -45,7 +45,7 @@ export class HttpApiService {
           payload,
         )
         .pipe(shareReplay(), catchError((error) =>
-          this.handlerError(error)
+          this.handleError(error)
         ))
         .subscribe((res: any) => {
           res?.error ? observer.error(res.error) : observer.next(res);
@@ -62,7 +62,7 @@ export class HttpApiService {
           payload,
         )
         .pipe(catchError((error) =>
-          this.handlerError(error)
+          this.handleError(error)
         ))
         .subscribe((res: any) => {
           res?.error ? observer.error(res.error) : observer.next(res);
@@ -71,8 +71,16 @@ export class HttpApiService {
     });
   }
 
-  private handlerError({ error }: any): Observable<any> {
-    this.messages.showErrors(error);
-    return of(error);
+  private handleError(err: any): Observable<never> {
+
+    let errorMessage: string;
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+    }
+    console.error(err);
+    return throwError(errorMessage);
   }
 }

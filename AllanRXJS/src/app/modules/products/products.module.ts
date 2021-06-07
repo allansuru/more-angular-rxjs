@@ -10,6 +10,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { LoadingModule } from 'src/app/core/modules/loading/loading.module';
+import { SuppliersService } from './shared/services/suppliers.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { LoadingModule } from 'src/app/core/modules/loading/loading.module';
     LoadingModule
   ],
   declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent],
-  providers: [ProductsService]
+  providers: [ProductsService, SuppliersService]
 })
 export class ProductsModule { }
