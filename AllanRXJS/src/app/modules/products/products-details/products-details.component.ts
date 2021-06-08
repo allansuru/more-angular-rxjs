@@ -9,6 +9,8 @@ import { ProductsService } from '../shared/services/products.service';
 })
 export class ProductsDetailsComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'cost', 'minQuantity'];
+
   constructor(public productsService: ProductsService, ) { }
 
   ngOnInit(): void {

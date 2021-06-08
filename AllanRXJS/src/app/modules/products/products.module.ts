@@ -1,3 +1,4 @@
+import { ProductsSuppliesTableComponent } from './products-supplies-table/products-supplies-table.component';
 import { ProductsService } from './shared/services/products.service';
 import { ContentCardModule } from './../../core/modules/content-card/content-card.module';
 import { ProductsListComponent } from './products-list/products-list.component';
@@ -10,6 +11,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { LoadingModule } from 'src/app/core/modules/loading/loading.module';
 import { SuppliersService } from './shared/services/suppliers.service';
@@ -22,10 +24,11 @@ import { SuppliersService } from './shared/services/suppliers.service';
     MatButtonModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
     ContentCardModule,
     LoadingModule
   ],
-  declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent],
+  declarations: [ProductsComponent, ProductsListComponent, ProductsDetailsComponent, ProductsSuppliesTableComponent],
   providers: [ProductsService, SuppliersService]
 })
 export class ProductsModule { }

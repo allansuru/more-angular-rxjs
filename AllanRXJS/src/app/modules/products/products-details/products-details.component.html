@@ -1,5 +1,5 @@
 <div class="container-products-details" *ngIf="productsService.productWithSupplierAndCategorie$ | async as ps">
-  <ng-container *ngIf="ps.supplier.length">
+  <ng-container *ngIf="ps.supplier?.length">
     <content-card [title]="'Produtos'" [subtitle]="'Detalhe do Produto'">
       <div main-content>
         <div class="row">
@@ -23,6 +23,10 @@
         </div>
         <div></div>
         <mat-divider [inset]="true"></mat-divider>
+
+        <div class="row mt-4">
+          <products-supplies-table [displayedColumns]=displayedColumns [dataSource]=ps.supplier></products-supplies-table>
+        </div>
       </div>
     </content-card>
   </ng-container>
