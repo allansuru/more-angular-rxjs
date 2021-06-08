@@ -25,13 +25,14 @@ export class ProductsService {
     this.productSelectedAction$
   ]).pipe(
     map(([products, selectedProductId]) =>
-      products.find(product => product.id === selectedProductId)
+      products.find(product => product.id === selectedProductId) as Product
     ),
     tap(product =>
       console.log('selectedProduct', product)
     ),
     shareReplay(1)
   );
+
 
   productWithSupplierAndCategorie$ = combineLatest([
     this.selectedProduct$,
@@ -41,7 +42,7 @@ export class ProductsService {
     map(([product, suppliers, categories]) => {
       return {
         ...product,
-        supplier: suppliers.filter(s => product?.supplierIds?.includes(s.id)),
+        supplier: suppliers.filter(s => product?.supplierIds?.includes(s?.id)),
         category: categories.filter(c => c.id === product?.categoryId)[0]
       } as ProductWithSupplierAndCategorie;
     }),

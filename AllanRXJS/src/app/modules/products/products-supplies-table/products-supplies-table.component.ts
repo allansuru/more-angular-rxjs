@@ -1,6 +1,5 @@
 
 import { Component, Input } from '@angular/core';
-import { Supplier } from '../shared/interfaces/supplier';
 
 @Component({
   selector: 'products-supplies-table',
@@ -9,7 +8,7 @@ import { Supplier } from '../shared/interfaces/supplier';
 })
 export class ProductsSuppliesTableComponent {
   @Input() displayedColumns: string[] = [];
-  @Input() dataSource: Supplier[] = [];
+  @Input() dataSource: Array<any> = [];
 
   constructor() { }
 

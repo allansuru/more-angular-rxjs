@@ -1,6 +1,7 @@
+
 <div class="container-products-details" *ngIf="productsService.productWithSupplierAndCategorie$ | async as ps">
   <ng-container *ngIf="ps.supplier?.length">
-    <content-card [title]="'Produtos'" [subtitle]="'Detalhe do Produto'">
+    <content-card [title]="'Detalhes'" [subtitle]="pageTitle$ | async ">
       <div main-content>
         <div class="row">
           <span class="mat-subheading-2">Name: </span> <span class="mat-caption">{{ps.productName}}</span>
@@ -25,7 +26,7 @@
         <mat-divider [inset]="true"></mat-divider>
 
         <div class="row mt-4">
-          <products-supplies-table [displayedColumns]=displayedColumns [dataSource]=ps.supplier></products-supplies-table>
+          <products-supplies-table [displayedColumns]=displayedColumns [dataSource]=ps?.supplier></products-supplies-table>
         </div>
       </div>
     </content-card>
