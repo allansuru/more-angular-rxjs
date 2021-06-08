@@ -23,7 +23,7 @@ export class ContentCardComponent implements OnInit {
   @Input() isShowShadow = true;
   @Input() isShowDivider = true;
   @Input()
-  subtitle!: string;
+  subtitle?: string | null;
   @Input() minHeigth = '100';
   @Input()
   loading!: boolean | null;

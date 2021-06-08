@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductsSuppliesTableComponent {
   @Input() displayedColumns: string[] = [];
-  @Input() dataSource: Array<any> = [];
+  @Input() dataSource: any;
 
   constructor() { }
 

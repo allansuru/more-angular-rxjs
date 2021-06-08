@@ -1,7 +1,7 @@
 
 <div class="container-products-details" *ngIf="productsService.productWithSupplierAndCategorie$ | async as ps">
   <ng-container *ngIf="ps.supplier?.length">
-    <content-card [title]="'Detalhes'" [subtitle]="pageTitle$ | async ">
+    <content-card [title]="'Detalhes'" [subtitle]="pageTitle$ | async">
       <div main-content>
         <div class="row">
           <span class="mat-subheading-2">Name: </span> <span class="mat-caption">{{ps.productName}}</span>
