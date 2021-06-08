@@ -1,10 +1,13 @@
+import { ProductCategory } from './../interfaces/product-category';
+
 import { LoadingService } from './../../../../core/modules/loading/loading.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { Injectable, Component } from '@angular/core';
 import { ProductsApiService } from './products-api.service';
-import { Product } from '../interfaces/product';
+import { Product, ProductWithSupplierAndCategorie } from '../interfaces/product';
 import { map, tap, shareReplay } from 'rxjs/operators';
 import { SuppliersService } from './suppliers.service';
+import { CategoryService } from './category.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +15,8 @@ import { SuppliersService } from './suppliers.service';
 export class ProductsService {
 
   products$: Observable<Product[]> = this.productsApiService.getProducts();
+  categories$: Observable<ProductCategory[]> = this.categoryService.categories$;
+  // categories$: Observable<ProductCategory[]> this
   private productSelectedSubject = new BehaviorSubject<number>(0);
   productSelectedAction$ = this.productSelectedSubject.asObservable();
 
@@ -28,25 +33,26 @@ export class ProductsService {
     shareReplay(1)
   );
 
-  productWithSupplier$ = combineLatest([
+  productWithSupplierAndCategorie$ = combineLatest([
     this.selectedProduct$,
     this.suppliersService.suppliers$,
+    this.categories$
   ]).pipe(
-    map(([product, suppliers]) => {
+    map(([product, suppliers, categories]) => {
       return {
         ...product,
-        suppliers: suppliers.filter(s => product?.supplierIds?.includes(s.id))
-      };
+        supplier: suppliers.filter(s => product?.supplierIds?.includes(s.id)),
+        category: categories.filter(c => c.id === product?.categoryId)[0]
+      } as ProductWithSupplierAndCategorie;
     }),
     shareReplay(1)
-  ).subscribe(teste => {
-    debugger
-  });
+  )
 
   constructor(
     private productsApiService: ProductsApiService,
     public loadingService: LoadingService,
-    private suppliersService: SuppliersService) {
+    private suppliersService: SuppliersService,
+    private categoryService: CategoryService) {
     this.getProducts();
   }
 

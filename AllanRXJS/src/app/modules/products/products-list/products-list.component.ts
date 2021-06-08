@@ -1,14 +1,13 @@
 import { LoadingService } from './../../../core/modules/loading/loading.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsService } from '../shared/services/products.service';
-import { of, Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Product } from '../shared/interfaces/product';
+
 
 @Component({
   selector: 'products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  styleUrls: ['./products-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsListComponent implements OnInit {
 

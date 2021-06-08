@@ -7,7 +7,9 @@ import { ProductsComponent } from './products.component';
 import { ProductsRoutes } from './products.routing';
 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { LoadingModule } from 'src/app/core/modules/loading/loading.module';
 import { SuppliersService } from './shared/services/suppliers.service';
@@ -18,6 +20,8 @@ import { SuppliersService } from './shared/services/suppliers.service';
     ProductsRoutes,
     MatGridListModule,
     MatButtonModule,
+    MatListModule,
+    MatDividerModule,
     ContentCardModule,
     LoadingModule
   ],

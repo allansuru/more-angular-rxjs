@@ -1,3 +1,4 @@
+import { ProductCategory } from './product-category';
 import { Supplier } from './supplier';
 import { StatusCode } from '../enums/status-code.enum';
 
@@ -12,7 +13,6 @@ export interface Product {
   quantityInStock?: number;
   searchKey?: string[];
   supplierIds?: number[];
-  suppliers?: Supplier[]; // To demonstrate a nested object graph
   status?: StatusCode;    // Identifies current status of the item
 }
 
@@ -39,11 +39,13 @@ export class ProductClass {
 
 // Provided to demonstrate merging parent and
 // child data into individual rows
-export interface ProductWithSupplier {
+export interface ProductWithSupplierAndCategorie {
   id: number;
   productName: string;
   productCode?: string;
   description?: string;
-  category?: string;
-  supplier?: string;
+  price?: number;
+  quantityInStock?: number;
+  supplier?: Supplier[];
+  category?: ProductCategory;
 }

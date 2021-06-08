@@ -5,7 +5,7 @@
 
       <button mat-stroked-button *ngFor='let product of products' class="button-product"
         (click)='onSelected(product.id)' [ngClass]="{'active': product?.id === (selectedProduct$ | async)?.id}">
-        {{ product.productName }} {{ product.category }}</button>
+        {{ product.productName }} </button>
     </div>
   </content-card>
 </div>

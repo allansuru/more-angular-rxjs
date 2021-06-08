@@ -1,6 +1,29 @@
-<div class="container-products-details">
-  <content-card [title]="'Produtos'" [subtitle]="'Detalhe dos Produtos'">
-    <div main-content></div>
-  </content-card>
-
+<div class="container-products-details" *ngIf="productsService.productWithSupplierAndCategorie$ | async as ps">
+  <ng-container *ngIf="ps.supplier.length">
+    <content-card [title]="'Produtos'" [subtitle]="'Detalhe do Produto'">
+      <div main-content>
+        <div class="row">
+          <span class="mat-subheading-2">Name: </span> <span class="mat-caption">{{ps.productName}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Code: </span> <span class="mat-caption">{{ps.productCode}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Category: </span> <span class="mat-caption">{{ps.category?.name}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Description: </span> <span class="mat-caption">{{ps.description}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Price: </span> <span
+            class="mat-caption">{{ps.price |currency:"USD":"symbol"}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">In Stock: </span> <span class="mat-caption">{{ps.quantityInStock}}</span>
+        </div>
+        <div></div>
+        <mat-divider [inset]="true"></mat-divider>
+      </div>
+    </content-card>
+  </ng-container>
 </div>

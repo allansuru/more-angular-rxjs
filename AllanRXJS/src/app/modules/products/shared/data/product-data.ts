@@ -22,20 +22,6 @@ export class ProductData {
       categoryId: 1,
       quantityInStock: 2,
       supplierIds: [3, 4],
-      suppliers: [
-        {
-          id: 3,
-          name: 'Acme Gardening Supply',
-          cost: 12,
-          minQuantity: 6
-        },
-        {
-          id: 4,
-          name: 'Acme General Supply',
-          cost: 25,
-          minQuantity: 2
-        }
-      ]
     },
     {
       id: 5,
