@@ -1,5 +1,5 @@
 import { LoadingService } from './../../../core/modules/loading/loading.service';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsService } from '../shared/services/products.service';
 
 
@@ -9,16 +9,12 @@ import { ProductsService } from '../shared/services/products.service';
   styleUrls: ['./products-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent {
 
-  // Selected product to highlight the entry
-  selectedProduct$ = this.productsService.selectedProduct$;
+  constructor(
+    public productsService: ProductsService,
+    public loadingService: LoadingService) {
 
-  constructor(public productsService: ProductsService, public loadingService: LoadingService) {
-
-  }
-
-  ngOnInit(): void {
   }
 
   onSelected(productId: number): void {

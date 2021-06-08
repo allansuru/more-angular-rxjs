@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsService } from '../shared/services/products.service';
-import { map, filter, startWith } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Product } from '../shared/interfaces/product';
 
 @Component({
@@ -9,7 +9,7 @@ import { Product } from '../shared/interfaces/product';
   styleUrls: ['./products-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductsDetailsComponent implements OnInit {
+export class ProductsDetailsComponent {
 
   displayedColumns: string[] = ['name', 'cost', 'minQuantity'];
 
@@ -20,11 +20,8 @@ export class ProductsDetailsComponent implements OnInit {
       map((p: Product) =>
         p ? `Product Detail for: ${p.productName}` : null
       )
-    )
+    );
 
   constructor(public productsService: ProductsService, ) { }
-
-  ngOnInit(): void {
-  }
 
 }
