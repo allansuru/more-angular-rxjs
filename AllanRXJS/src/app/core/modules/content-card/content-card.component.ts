@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
 
@@ -26,7 +27,7 @@ export class ContentCardComponent implements OnInit {
   subtitle?: string | null;
   @Input() minHeigth = '100';
   @Input()
-  loading!: boolean | null;
+  loading?: boolean | null
 
   constructor() { }
 

@@ -3,6 +3,7 @@ import { Supplier } from './supplier';
 import { StatusCode } from '../enums/status-code.enum';
 
 export interface Product {
+
   id: number;
   productName: string;
   productCode?: string;
@@ -14,6 +15,8 @@ export interface Product {
   searchKey?: string[];
   supplierIds?: number[];
   status?: StatusCode;    // Identifies current status of the item
+
+
 }
 
 // Provided to demonstrate how to map to
