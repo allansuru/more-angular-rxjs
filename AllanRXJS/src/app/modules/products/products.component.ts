@@ -1,4 +1,10 @@
+
+import { Supplier } from './shared/interfaces/supplier';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
+import { switchMap, tap, flatMap, mergeMap, concatAll, concatMap, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'products',
@@ -7,9 +13,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+  idsSelecteds = of(1, 2);
+  listSuppliers: any[] = [];
+
+  ngOnInit(): void {
+    this.idsSelecteds.pipe(
+      mergeMap((id) => this.http.get<Supplier>(`${environment.baseUrl}suppliers/${id}`)),
+      map(({ name, cost, minQuantity, id }) => ({ id, name, total: cost * minQuantity })),
+      tap(resp => {
+        this.listSuppliers = [...this.listSuppliers, resp];
+        console.log(resp);
+      })
+    ).subscribe();
   }
 
 }

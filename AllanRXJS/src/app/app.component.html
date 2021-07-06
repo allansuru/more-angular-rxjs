@@ -1,8 +1,6 @@
 <mat-sidenav-container fullscreen>
-
   <mat-sidenav #start (click)="start.close()">
     <mat-nav-list>
-
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
         <span>Home</span>
@@ -13,29 +11,24 @@
         <span>Products</span>
       </a>
 
-
-
+      <a mat-list-item routerLink="/products-ngxs">
+        <mat-icon>redeem</mat-icon>
+        <span>Products NGXS</span>
+      </a>
     </mat-nav-list>
-
   </mat-sidenav>
 
   <mat-toolbar color="primary">
-
     <div class="toolbar-tools">
-
       <button mat-icon-button (click)="start.open('mouse')">
         <mat-icon>menu</mat-icon>
       </button>
 
       <div class="filler"></div>
-
     </div>
-
-
   </mat-toolbar>
 
   <messages></messages>
 
   <router-outlet></router-outlet>
-
 </mat-sidenav-container>

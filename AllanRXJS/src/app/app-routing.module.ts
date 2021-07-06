@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: AppRouteLink.HOME, loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
   { path: '', pathMatch: 'full', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
   { path: AppRouteLink.PRODUCTS, loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule) },
+  { path: AppRouteLink.PRODUCTS_NGXS, loadChildren: () => import('./modules/products-ngxs/products-ngxs.module').then(m => m.ProductsNgxsModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 
