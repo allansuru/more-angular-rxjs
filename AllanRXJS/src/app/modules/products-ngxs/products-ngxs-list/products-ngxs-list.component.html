@@ -9,12 +9,12 @@
         <!-- <button mat-stroked-button *ngFor='let product of products' class="button-product"
         (click)='onSelected(product.id)' [ngClass]="{'active': product?.id === (this.productsService.selectedProduct$ | async)?.id}">
         {{ product.productName }} </button> -->
-        {{ products.productName }}
+
         <button
           mat-stroked-button
           *ngFor="let product of products"
           class="button-product"
-          (click)="onSelected(product.id)"
+          (click)="onSelected(product)"
         >
           {{ product.productName }}
         </button>

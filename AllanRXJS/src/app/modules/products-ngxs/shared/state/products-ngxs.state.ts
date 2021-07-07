@@ -9,7 +9,7 @@ import { ProductActions } from './products-ngxs.actions';
 
 @State<ProductState>({
   name: 'ProductState',
-  defaults: { products: [], productCategory: {}, suppliers: [] }
+  defaults: { products: [], productSelected: null }
 })
 @Injectable()
 export class ProductStore {
@@ -27,5 +27,20 @@ export class ProductStore {
   static productsSelect(state: ProductState): Product[] {
     return state.products;
   }
+
+  @Action(ProductActions.SelectedProduct)
+  selectProduct(ctx: StateContext<ProductState>, { productSelected }: any) {
+    const state = ctx.getState();
+
+    ctx.setState({
+      ...state,
+      productSelected
+    })
+
+
+  }
+
+
+
 
 }

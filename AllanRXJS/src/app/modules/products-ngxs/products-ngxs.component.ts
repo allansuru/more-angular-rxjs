@@ -1,11 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentEvent } from './../../core/abstract-clasess/component-event-handler/component-event';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { ProductActions } from './shared/state/products-ngxs.actions';
 import { ProductsApiService } from './shared/services/products-api.service';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Product } from '../products/shared/interfaces/product';
+import { tap, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { Product } from 'src/app/modules/products/shared/interfaces/product';
+
 import { ProductStore } from './shared/state/products-ngxs.state';
+import { ProductsService } from './shared/services/products.service';
+import { ProductsAction } from './shared/enums/products-action.enum';
+
 
 @Component({
   selector: 'products-ngxs',
@@ -13,16 +18,48 @@ import { ProductStore } from './shared/state/products-ngxs.state';
   styleUrls: ['./products-ngxs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductsNgxsComponent implements OnInit {
+export class ProductsNgxsComponent implements OnInit, OnDestroy {
 
   @Select(ProductStore.productsSelect)
   public products$?: Observable<Product[]>
 
-  constructor(private store: Store, private productsApiService: ProductsApiService) { }
+  private onDestroy$: Subject<void> = new Subject<void>();
+
+  constructor(private store: Store, private productsApiService: ProductsApiService, private productsService: ProductsService) { }
 
   ngOnInit() {
+    this.childComponentsInit();
     this.initStore();
   }
+
+  ngOnDestroy() {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  private childComponentsActionReducer(event: ComponentEvent<ProductsAction, Product>) {
+    switch (event.action) {
+      case ProductsAction.SELECT_PRODUCT:
+        this.store.dispatch(new ProductActions.SelectedProduct(event.data))
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  private childComponentsInit() {
+    this.productsService.onEvent
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap((event) => {
+          this.childComponentsActionReducer(event);
+        })
+      )
+      .subscribe();
+
+  }
+
 
   private initStore() {
     this.productsApiService.getProducts().pipe(

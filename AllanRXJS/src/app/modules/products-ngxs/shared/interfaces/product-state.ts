@@ -4,6 +4,5 @@ import { ProductCategory } from 'src/app/modules/products/shared/interfaces/prod
 
 export interface ProductState {
   products: Product[];
-  productCategory: ProductCategory;
-  suppliers: Supplier[];
+  productSelected?: any
 }
