@@ -51,8 +51,13 @@ export class ProductStore {
   }
 
   @Selector()
-  static productSelected(state: ProductState): ProductSelected {
+  static productSelected(state: ProductState): ProductSelected | undefined {
     return state.productSelected;
+  }
+
+  @Selector()
+  static productTitleSelected(state: ProductState): string {
+    return `Product Detail for: ${state.productSelected?.productName}`
   }
 
   @Action(ProductActions.GetCategoryByProduct)

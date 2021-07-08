@@ -26,6 +26,9 @@ export class ProductsNgxsComponent implements OnInit, OnDestroy {
   @Select(ProductStore.productSelected)
   public productSelected$?: Observable<ProductSelected>;
 
+  @Select(ProductStore.productTitleSelected)
+  public productTitleSelected$?: Observable<string>;
+
   private onDestroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store, private productsService: ProductsService) { }

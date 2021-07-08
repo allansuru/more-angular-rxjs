@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'products-ngxs-details',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products-ngxs-details.component.scss']
 })
 export class ProductsNgxsDetailsComponent implements OnInit {
+
+  @Input() productTitleSelected$?: Observable<string>;
 
   constructor() { }
 

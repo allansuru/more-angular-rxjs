@@ -5,7 +5,11 @@
       [productSelected$]="productSelected$ | async"
     ></products-ngxs-list>
   </div>
-  <!-- <div>
-    <products-details></products-details>
-  </div> -->
+  <div>
+    <ng-container *ngIf="productSelected$ | async">
+      <products-ngxs-details
+        [productTitleSelected$]="productTitleSelected$"
+      ></products-ngxs-details>
+    </ng-container>
+  </div>
 </div>

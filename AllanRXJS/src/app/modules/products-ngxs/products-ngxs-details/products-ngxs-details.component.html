@@ -1,3 +1,36 @@
-<p>
-  products-ngxs-details works!
-</p>
+<div class="container-products-details">
+  <ng-container>
+    <content-card
+      [title]="'Detalhes'"
+      [subtitle]="productTitleSelected$ | async"
+    >
+      <div main-content>
+        <!-- <div class="row">
+          <span class="mat-subheading-2">Name: </span> <span class="mat-caption">{{ps.productName}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Code: </span> <span class="mat-caption">{{ps.productCode}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Category: </span> <span class="mat-caption">{{ps.category?.name}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Description: </span> <span class="mat-caption">{{ps.description}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">Price: </span> <span
+            class="mat-caption">{{ps.price |currency:"USD":"symbol"}}</span>
+        </div>
+        <div class="row">
+          <span class="mat-subheading-2">In Stock: </span> <span class="mat-caption">{{ps.quantityInStock}}</span>
+        </div>
+        <div></div> -->
+        <mat-divider [inset]="true"></mat-divider>
+
+        <div class="row mt-4">
+          <!-- <products-supplies-table [displayedColumns]=displayedColumns [dataSource]=ps?.supplier></products-supplies-table> -->
+        </div>
+      </div>
+    </content-card>
+  </ng-container>
+</div>
