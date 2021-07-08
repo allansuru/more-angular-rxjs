@@ -5,7 +5,7 @@ import { ProductActions } from './shared/state/products-ngxs.actions';
 import { ProductsApiService } from './shared/services/products-api.service';
 import { tap, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { Product } from 'src/app/modules/products/shared/interfaces/product';
+import { Product, ProductSelected } from 'src/app/modules/products/shared/interfaces/product';
 
 import { ProductStore } from './shared/state/products-ngxs.state';
 import { ProductsService } from './shared/services/products.service';
@@ -20,8 +20,11 @@ import { ProductsAction } from './shared/enums/products-action.enum';
 })
 export class ProductsNgxsComponent implements OnInit, OnDestroy {
 
-  @Select(ProductStore.productsSelect)
+  @Select(ProductStore.products)
   public products$?: Observable<Product[]>
+
+  @Select(ProductStore.productSelected)
+  public productSelected$?: Observable<ProductSelected>;
 
   private onDestroy$: Subject<void> = new Subject<void>();
 

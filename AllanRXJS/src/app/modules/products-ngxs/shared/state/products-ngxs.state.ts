@@ -33,7 +33,7 @@ export class ProductStore {
   }
 
   @Selector()
-  static productsSelect(state: ProductState): Product[] {
+  static products(state: ProductState): Product[] {
     return state.products;
   }
 
@@ -48,6 +48,11 @@ export class ProductStore {
 
     dispatch(new ProductActions.GetCategoryByProduct(Number(productSelected?.categoryId)))
 
+  }
+
+  @Selector()
+  static productSelected(state: ProductState): ProductSelected {
+    return state.productSelected;
   }
 
   @Action(ProductActions.GetCategoryByProduct)

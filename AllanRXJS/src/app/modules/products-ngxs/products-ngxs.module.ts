@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { ContentCardModule } from 'src/app/core/modules/content-card/content-card.module';
+import { ProductsNgxsDetailsComponent } from './products-ngxs-details/products-ngxs-details.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,6 @@ import { ContentCardModule } from 'src/app/core/modules/content-card/content-car
     NgxsReduxDevtoolsPluginModule.forRoot()
 
   ],
-  declarations: [ProductsNgxsComponent, ProductsNgxsListComponent]
+  declarations: [ProductsNgxsComponent, ProductsNgxsListComponent, ProductsNgxsDetailsComponent]
 })
 export class ProductsNgxsModule { }

@@ -1,6 +1,9 @@
 <div class="flex" fxLayoutAlign="center center" fxLayout.xs="column">
   <div>
-    <products-ngxs-list [products$]="products$"></products-ngxs-list>
+    <products-ngxs-list
+      [products$]="products$"
+      [productSelected$]="productSelected$ | async"
+    ></products-ngxs-list>
   </div>
   <!-- <div>
     <products-details></products-details>

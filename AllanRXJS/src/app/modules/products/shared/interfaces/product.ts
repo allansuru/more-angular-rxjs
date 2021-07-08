@@ -19,7 +19,8 @@ export interface Product {
 }
 
 export interface ProductSelected {
-  productSelected: Product;
+  productSelected?: Product;
+  id?: number
 }
 
 // Provided to demonstrate how to map to
