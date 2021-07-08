@@ -10,7 +10,7 @@ export interface Product {
   description?: string;
   price?: number;
   categoryId?: number;
-  category?: string;
+  category?: ProductCategory;
   quantityInStock?: number;
   searchKey?: string[];
   supplierIds?: number[];

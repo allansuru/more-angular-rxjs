@@ -12,7 +12,7 @@ import { CategoryApiService } from 'src/app/modules/products/shared/services/cat
 
 @State<ProductState>({
   name: 'ProductState',
-  defaults: { products: [], productSelected: null, categoryByProduct: [] }
+  defaults: { products: [], productSelected: null, categoryByProduct: {} }
 })
 @Injectable()
 export class ProductStore {
@@ -68,7 +68,11 @@ export class ProductStore {
       tap((categories) => {
         patchState({
           ...state,
-          categoryByProduct: categories.filter(c => c.id === idCategory),
+          productSelected: {
+            ...state.productSelected,
+            category: categories.filter(c => c.id === idCategory)[0],
+          },
+          categoryByProduct: categories.filter(c => c.id === idCategory)[0],
         })
       }))
   }

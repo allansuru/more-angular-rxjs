@@ -1,3 +1,4 @@
+import { Product } from 'src/app/modules/products/shared/interfaces/product';
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductsNgxsDetailsComponent implements OnInit {
 
   @Input() productTitleSelected$?: Observable<string>;
+  @Input() productSelected$?: Observable<Product>;
 
   constructor() { }
 

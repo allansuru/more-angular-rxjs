@@ -9,6 +9,7 @@
     <ng-container *ngIf="productSelected$ | async">
       <products-ngxs-details
         [productTitleSelected$]="productTitleSelected$"
+        [productSelected$]="productSelected$"
       ></products-ngxs-details>
     </ng-container>
   </div>
