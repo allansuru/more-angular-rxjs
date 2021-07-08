@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
 import { Observable } from 'rxjs';
-import { Supplier } from '../interfaces/supplier';
+import { Supplier } from 'src/app/modules/products/shared/interfaces/supplier';
+
 
 @Injectable({
   providedIn: 'root'

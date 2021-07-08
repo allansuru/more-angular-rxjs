@@ -1,4 +1,4 @@
-import { Supplier } from './../interfaces/supplier';
+import { Supplier } from 'src/app/modules/products/shared/interfaces/supplier';
 
 export class SupplierData {
 

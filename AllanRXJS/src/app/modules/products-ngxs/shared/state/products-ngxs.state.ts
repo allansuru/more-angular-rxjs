@@ -1,4 +1,4 @@
-import { Product } from 'src/app/modules/products/shared/interfaces/product';
+import { Product, ProductSelected } from 'src/app/modules/products/shared/interfaces/product';
 
 import { State, Action, StateContext, Selector } from "@ngxs/store";
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
@@ -7,16 +7,17 @@ import { ProductState } from '../interfaces/product-state';
 import { ProductActions } from './products-ngxs.actions';
 import { ProductsApiService } from 'src/app/modules/products/shared/services/products-api.service';
 import { tap } from 'rxjs/operators';
+import { CategoryApiService } from 'src/app/modules/products/shared/services/category-api.service';
 
 
 @State<ProductState>({
   name: 'ProductState',
-  defaults: { products: [], productSelected: null }
+  defaults: { products: [], productSelected: null, categoryByProduct: [] }
 })
 @Injectable()
 export class ProductStore {
 
-  constructor(private productsApiService: ProductsApiService, ) { }
+  constructor(private productsApiService: ProductsApiService, private categoryApiService: CategoryApiService) { }
 
   @Action(ProductActions.FetchProducts)
   fetchProducts({ getState, patchState }: StateContext<ProductState>) {
@@ -37,17 +38,30 @@ export class ProductStore {
   }
 
   @Action(ProductActions.SelectedProduct)
-  selectProduct(ctx: StateContext<ProductState>, { productSelected }: any) {
-    const state = ctx.getState();
+  selectProduct({ getState, setState, dispatch }: StateContext<ProductState>, { productSelected }: ProductSelected) {
+    const state = getState();
 
-    ctx.setState({
+    setState({
       ...state,
       productSelected
     })
 
+    dispatch(new ProductActions.GetCategoryByProduct(Number(productSelected?.categoryId)))
 
   }
 
+  @Action(ProductActions.GetCategoryByProduct)
+  getCategoryByProduct({ getState, patchState }: StateContext<ProductState>, { idCategory }: number | any) {
+    const state = getState();
+
+    return this.categoryApiService.getCategories().pipe(
+      tap((categories) => {
+        patchState({
+          ...state,
+          categoryByProduct: categories.filter(c => c.id === idCategory),
+        })
+      }))
+  }
 
 
 

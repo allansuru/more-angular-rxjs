@@ -16,7 +16,10 @@ export interface Product {
   supplierIds?: number[];
   status?: StatusCode;    // Identifies current status of the item
 
+}
 
+export interface ProductSelected {
+  productSelected: Product;
 }
 
 // Provided to demonstrate how to map to
