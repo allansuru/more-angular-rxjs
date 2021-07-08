@@ -25,7 +25,7 @@ export class ProductsNgxsComponent implements OnInit, OnDestroy {
 
   private onDestroy$: Subject<void> = new Subject<void>();
 
-  constructor(private store: Store, private productsApiService: ProductsApiService, private productsService: ProductsService) { }
+  constructor(private store: Store, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.childComponentsInit();
@@ -62,12 +62,7 @@ export class ProductsNgxsComponent implements OnInit, OnDestroy {
 
 
   private initStore() {
-    this.productsApiService.getProducts().pipe(
-      tap((products) =>
-        this.store.dispatch(new ProductActions.FetchProducts(products))
-      )
-    ).subscribe()
-
+    this.store.dispatch(new ProductActions.FetchProducts())
   }
 
 }

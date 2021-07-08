@@ -5,6 +5,8 @@ import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import { Injectable } from '@angular/core';
 import { ProductState } from '../interfaces/product-state';
 import { ProductActions } from './products-ngxs.actions';
+import { ProductsApiService } from 'src/app/modules/products/shared/services/products-api.service';
+import { tap } from 'rxjs/operators';
 
 
 @State<ProductState>({
@@ -14,13 +16,19 @@ import { ProductActions } from './products-ngxs.actions';
 @Injectable()
 export class ProductStore {
 
+  constructor(private productsApiService: ProductsApiService, ) { }
+
   @Action(ProductActions.FetchProducts)
-  @ImmutableContext()
-  fetchProducts({ setState }: StateContext<ProductState>, { products }: any) {
-    setState(state => {
-      state.products.push(...products);
-      return state;
-    })
+  fetchProducts({ getState, patchState }: StateContext<ProductState>) {
+    const state = getState();
+
+    if (state && state.products.length) {
+      return;
+    }
+
+    return this.productsApiService.getProducts().pipe(
+      tap((products) => patchState({ products })))
+
   }
 
   @Selector()
