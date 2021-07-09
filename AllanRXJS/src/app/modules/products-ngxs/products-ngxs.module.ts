@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { ContentCardModule } from 'src/app/core/modules/content-card/content-card.module';
 import { ProductsNgxsDetailsComponent } from './products-ngxs-details/products-ngxs-details.component';
+import { ProductsNgxsDetailsTableComponent } from './products-ngxs-details-table/products-ngxs-details-table.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,6 @@ import { ProductsNgxsDetailsComponent } from './products-ngxs-details/products-n
     NgxsReduxDevtoolsPluginModule.forRoot()
 
   ],
-  declarations: [ProductsNgxsComponent, ProductsNgxsListComponent, ProductsNgxsDetailsComponent]
+  declarations: [ProductsNgxsComponent, ProductsNgxsListComponent, ProductsNgxsDetailsComponent, ProductsNgxsDetailsTableComponent]
 })
 export class ProductsNgxsModule { }

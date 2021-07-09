@@ -42,40 +42,10 @@
           <mat-spinner diameter="20"></mat-spinner>
         </ng-container>
         <ng-template #showTable>
-          <mat-table [dataSource]="ps.supplies">
-            <ng-container matColumnDef="name">
-              <mat-header-cell mat-header-cell *matHeaderCellDef>
-                Supplier
-              </mat-header-cell>
-              <mat-cell mat-cell *matCellDef="let element">
-                {{ element.name }}
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="cost">
-              <mat-header-cell mat-header-cell *matHeaderCellDef>
-                Cost
-              </mat-header-cell>
-              <mat-cell mat-cell *matCellDef="let element">
-                {{ element.cost | currency: "USD":"symbol":"1.2-2" }}
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="minQuantity">
-              <mat-header-cell mat-header-cell *matHeaderCellDef>
-                Quantity
-              </mat-header-cell>
-              <mat-cell mat-cell *matCellDef="let element">
-                {{ element.minQuantity }}
-              </mat-cell>
-            </ng-container>
-
-            <mat-header-row
-              *matHeaderRowDef="displayedColumns"
-            ></mat-header-row>
-            <mat-row
-              matRipple
-              *matRowDef="let row; columns: displayedColumns"
-            ></mat-row>
-          </mat-table>
+          <products-ngxs-details-table
+            [dataSource]="ps.supplies"
+            [displayedColumns]="displayedColumns"
+          ></products-ngxs-details-table>
         </ng-template>
       </div>
     </div>

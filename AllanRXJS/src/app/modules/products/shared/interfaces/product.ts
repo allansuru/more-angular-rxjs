@@ -14,6 +14,7 @@ export interface Product {
   quantityInStock?: number;
   searchKey?: string[];
   supplierIds?: number[];
+  supplies?: Supplier[];
   status?: StatusCode;    // Identifies current status of the item
 
 }
