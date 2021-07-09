@@ -102,6 +102,15 @@ export class ProductStore {
         });
       })
     )
+  }
 
+  @Action(ProductActions.ClearState)
+  clearState({ setState }: StateContext<ProductState>) {
+    setState({
+      products: [],
+      productSelected: null,
+      categoryByProduct: {},
+      supplies: [],
+    });
   }
 }

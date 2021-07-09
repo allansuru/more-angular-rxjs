@@ -1,5 +1,5 @@
 import { Product } from './../../../products/shared/interfaces/product';
-import { ProductCategory } from 'src/app/modules/products/shared/interfaces/product-category';
+
 export namespace ProductActions {
   export class FetchProducts {
     static readonly type = '[Product] Fetch Products'
@@ -15,5 +15,9 @@ export namespace ProductActions {
     constructor(public idCategory: number) { }
   }
 
+
+  export class ClearState {
+    static type = '[CLEAR] Clear State';
+  }
 
 }
