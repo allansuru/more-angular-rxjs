@@ -10,7 +10,7 @@ export namespace ProductActions {
     constructor(public productSelected: Product) { }
   }
 
-  export class GetCategoryByProduct {
+  export class GetCategoryAndSuppliesByProduct {
     static readonly type = '[Product] Get Categories by Product'
     constructor(public idCategory: number) { }
   }

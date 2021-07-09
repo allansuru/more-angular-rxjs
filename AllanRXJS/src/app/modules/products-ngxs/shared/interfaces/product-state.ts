@@ -6,4 +6,5 @@ export interface ProductState {
   products: Product[];
   productSelected?: any;
   categoryByProduct?: ProductCategory;
+  supplies: Supplier[];
 }
