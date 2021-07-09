@@ -95,6 +95,7 @@ export class ProductStore {
           productSelected: {
             ...state.productSelected,
             category: categories.filter((c) => c.id === idCategory)[0],
+            supplies: supplies.filter(s => state.productSelected.supplierIds.includes(s.id))
           },
           categoryByProduct: categories.filter((c) => c.id === idCategory)[0],
           supplies: supplies.filter(s => state.productSelected.supplierIds.includes(s.id))

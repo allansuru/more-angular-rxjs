@@ -12,6 +12,8 @@ export class ProductsNgxsDetailsComponent implements OnInit {
   @Input() productTitleSelected$?: Observable<string>;
   @Input() productSelected$?: Observable<Product>;
 
+  displayedColumns: string[] = ['name', 'cost', 'minQuantity'];
+
   constructor() { }
 
   ngOnInit() {
