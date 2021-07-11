@@ -17,6 +17,7 @@ import { NgxsModule, NGXS_PLUGINS } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { logoutPlugin } from './core/reducers/logoutPlugin';
+import { GlobalStore } from './core/store/global.state';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { logoutPlugin } from './core/reducers/logoutPlugin';
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
     MessagesModule,
     HttpClientModule,
-    NgxsModule.forRoot([], {
+    NgxsModule.forRoot([GlobalStore], {
       developmentMode: !environment.production
     }),
     NgxsReduxDevtoolsPluginModule.forRoot()

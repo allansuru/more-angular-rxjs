@@ -1,6 +1,9 @@
+import { GlobalStore } from './../../store/global.state';
+import { Select } from '@ngxs/store';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'content-card',
@@ -28,6 +31,9 @@ export class ContentCardComponent implements OnInit {
   @Input() minHeigth = '100';
   @Input()
   loading?: boolean | null
+
+  @Select(GlobalStore.errorSelect)
+  public errorApi$?: Observable<string>;
 
   constructor() { }
 

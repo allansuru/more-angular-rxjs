@@ -1,3 +1,5 @@
+import { GlobalActions } from './../store/global.actions';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
@@ -8,6 +10,7 @@ import * as queryString from 'query-string';
 
 import { environment } from 'src/environments/environment';
 import { MessagesService } from '../modules/messages/messages.service';
+import { Store } from '@ngxs/store';
 
 
 @Injectable({
@@ -15,7 +18,7 @@ import { MessagesService } from '../modules/messages/messages.service';
 })
 export class HttpApiService {
 
-  constructor(private http: HttpClient, private messages: MessagesService) { }
+  constructor(private http: HttpClient, private messages: MessagesService, private store: Store) { }
 
   get<payloadT>(endPointUrl: string, payload?: any): Observable<payloadT> {
     const params = payload
@@ -80,6 +83,7 @@ export class HttpApiService {
       errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
     }
     this.messages.showErrors(errorMessage);
+    this.store.dispatch(new GlobalActions.SetError(errorMessage))
     return throwError(errorMessage);
   }
 }

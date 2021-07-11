@@ -3,8 +3,7 @@ import { ProductActions } from 'src/app/modules/products-ngxs/shared/state/produ
 
 export function logoutPlugin(state: {}, action: any, next: (arg0: any, arg1: any) => any) {
   // Use the get action type helper to determine the type
-  debugger
-  let nameAction = action;
+
   if (getActionTypeFromInstance(action)) {
 
     // if we are a logout type, lets erase all the state

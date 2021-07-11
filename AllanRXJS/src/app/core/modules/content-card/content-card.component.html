@@ -1,37 +1,65 @@
-<mat-card [ngClass]="{'mat-elevation-z0': !isShowShadow}" class="mb-4" [@pageAnimations]="loading? 'initial' : 'final'">
+<mat-card
+  [ngClass]="{ 'mat-elevation-z0': !isShowShadow }"
+  class="mb-4"
+  [@pageAnimations]="loading ? 'initial' : 'final'"
+>
   <mat-card-title *ngIf="title">
     <div fxFlex fxLayout="row" fxLayoutAlign="space-betweeen center">
       <div fxLayout="column" fxLayoutGap="2px">
-        <span>{{title}}</span>
-        <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+        <span>{{ title }}</span>
+        <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
       </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="end end">
-
-      <ng-content select=[menu-buttons]>
-      </ng-content>
+      <ng-content select="[menu-buttons]"> </ng-content>
     </div>
   </mat-card-title>
 
   <mat-divider *ngIf="isShowDivider"></mat-divider>
 
-  <mat-card-content class="card-main-content" [ngStyle]="{'min-height.px':minHeigth }">
-
+  <mat-card-content
+    class="card-main-content"
+    [ngStyle]="{ 'min-height.px': minHeigth }"
+  >
     <ng-container *ngIf="loading; else elseTemplate">
-      <div class="loading-container" [ngStyle]="{'min-height.px':minHeigth }" fxLayout="column"
-        fxLayoutAlign="center center">
-        <div>
-          <mat-progress-spinner diameter=20 mode="indeterminate" color="primary"></mat-progress-spinner>
+      <ng-container *ngIf="errorApi$ | async; else loading">
+        <div
+          class="error-showing"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <div class="icon">
+            <mat-icon aria-hidden="false" aria-label="Error!"
+              >report_problem
+            </mat-icon>
+          </div>
+          <div class="error-message">
+            <span>Erro Inesperado!</span>
+          </div>
         </div>
-      </div>
+      </ng-container>
+      <ng-template #loading>
+        <div
+          class="loading-container"
+          [ngStyle]="{ 'min-height.px': minHeigth }"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <div>
+            <mat-progress-spinner
+              diameter="20"
+              mode="indeterminate"
+              color="primary"
+            ></mat-progress-spinner>
+          </div>
+        </div>
+      </ng-template>
     </ng-container>
     <ng-template #elseTemplate>
       <div class="card-projected-content">
-        <ng-content select=[main-content]>
-        </ng-content>
+        <ng-content select="[main-content]"> </ng-content>
       </div>
     </ng-template>
   </mat-card-content>
-
 </mat-card>

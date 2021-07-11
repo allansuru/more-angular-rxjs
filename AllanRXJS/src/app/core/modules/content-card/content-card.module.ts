@@ -6,7 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FlexModule,
     MatCardModule,
     MatDividerModule,
+    MatIconModule,
     MatProgressSpinnerModule
   ],
   declarations: [ContentCardComponent],
