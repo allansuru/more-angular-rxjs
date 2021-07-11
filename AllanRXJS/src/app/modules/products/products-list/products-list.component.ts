@@ -1,6 +1,9 @@
 import { LoadingService } from './../../../core/modules/loading/loading.service';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsService } from '../shared/services/products.service';
+import { Select } from '@ngxs/store';
+import { ProductStore } from '../../products-ngxs/shared/state/products-ngxs.state';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,9 +14,15 @@ import { ProductsService } from '../shared/services/products.service';
 })
 export class ProductsListComponent {
 
+  @Select(ProductStore.productTitleSelected)
+  public productTitleSelected$?: Observable<string>;
+
   constructor(
     public productsService: ProductsService,
     public loadingService: LoadingService) {
+    this.productTitleSelected$?.subscribe(teste => {
+      debugger
+    })
 
   }
 

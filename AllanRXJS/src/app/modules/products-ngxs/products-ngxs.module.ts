@@ -30,11 +30,7 @@ import { ProductsNgxsDetailsTableComponent } from './products-ngxs-details-table
     MatTableModule,
     ContentCardModule,
     MatProgressSpinnerModule,
-    NgxsModule.forRoot([ProductStore], {
-      developmentMode: !environment.production
-    }),
-    NgxsReduxDevtoolsPluginModule.forRoot()
-
+    NgxsModule.forFeature([ProductStore]),
   ],
   declarations: [ProductsNgxsComponent, ProductsNgxsListComponent, ProductsNgxsDetailsComponent, ProductsNgxsDetailsTableComponent]
 })

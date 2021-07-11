@@ -13,6 +13,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppData } from './app-data';
 import { MessagesModule } from './core/modules/messages/messages.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
     MessagesModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
