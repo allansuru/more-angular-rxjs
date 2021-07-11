@@ -13,9 +13,10 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppData } from './app-data';
 import { MessagesModule } from './core/modules/messages/messages.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, NGXS_PLUGINS } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { logoutPlugin } from './core/reducers/logoutPlugin';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
     }),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NGXS_PLUGINS,
+      useValue: logoutPlugin,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

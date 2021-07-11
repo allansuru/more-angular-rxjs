@@ -20,9 +20,6 @@ export class ProductsListComponent {
   constructor(
     public productsService: ProductsService,
     public loadingService: LoadingService) {
-    this.productTitleSelected$?.subscribe(teste => {
-      debugger
-    })
 
   }
 

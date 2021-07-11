@@ -41,7 +41,7 @@ export class ProductsNgxsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.onDestroy$.next();
     this.onDestroy$.complete();
-    // this.store.dispatch(new ProductActions.ClearState())
+    //this.store.dispatch(new ProductActions.ClearState())
   }
 
   private childComponentsActionReducer(event: ComponentEvent<ProductsAction, Product>) {
